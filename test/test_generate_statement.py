@@ -1,11 +1,27 @@
+from src.Movie import Movie
+from src.Rental import Rental
 from src.generate_statement import generate_statement
+
+def test_generate_statement_for_one_regular_rental():
+    rental_data = [
+        Rental(Movie("Crazynotes", "regular"), 1)
+    ]
+
+    expected_statement = (
+        "Rental Record for Customer Name\n"
+        "Crazynotes  £2.0\n"
+        "You owe £2.0\n"
+        "You earned 1 frequent renter points"
+    )
+
+    assert generate_statement(rental_data=rental_data, customer_name="Name") == expected_statement
 
 
 def test_generate_statement_for_three_regular_rentals():
     rental_data = [
-        {"name": "Crazynotes", "length": 1, "type": "regular"},
-        {"name": "Teeth", "length": 2, "type": "regular"},
-        {"name": "The Web", "length": 3, "type": "regular"},
+        Rental(Movie("Crazynotes", "regular"), 1),
+        Rental(Movie("Teeth", "regular"), 2),
+        Rental(Movie("The Web", "regular"), 3)
     ]
 
     expected_statement = (
@@ -21,7 +37,7 @@ def test_generate_statement_for_three_regular_rentals():
 
 def test_generate_statement_for_one_new_rental():
     rental_data = [
-        {"name": "Crazynotes", "length": 1, "type": "new"}
+        Rental(Movie("Crazynotes", "new"), 1)
     ]
 
     expected_statement = (
@@ -35,9 +51,9 @@ def test_generate_statement_for_one_new_rental():
 
 def test_generate_statement_for_three_new_rentals():
     rental_data = [
-        {"name": "Crazynotes", "length": 1, "type": "new"},
-        {"name": "Teeth", "length": 2, "type": "new"},
-        {"name": "The Web", "length": 3, "type": "new"},
+        Rental(Movie("Crazynotes", "new"), 1),
+        Rental(Movie("Teeth", "new"), 2),
+        Rental(Movie("The Web", "new"), 3)  
     ]
 
     expected_statement = (
@@ -53,7 +69,7 @@ def test_generate_statement_for_three_new_rentals():
 
 def test_generate_statement_for_one_childrens_rental():
     rental_data = [
-        {"name": "Crazynotes", "length": 1, "type": "child"}
+        Rental(Movie("Crazynotes", "child"), 1)
     ]
 
     expected_statement = (
@@ -68,9 +84,9 @@ def test_generate_statement_for_one_childrens_rental():
 
 def test_generate_statement_for_three_childrens_rentals():
     rental_data = [
-        {"name": "Crazynotes", "length": 1, "type": "child"},
-        {"name": "Teeth", "length": 3, "type": "child"},
-        {"name": "The Web", "length": 4, "type": "child"},
+        Rental(Movie("Crazynotes", "child"), 1),
+        Rental(Movie("Teeth", "child"), 3),
+        Rental(Movie("The Web", "child"), 4)  
     ]
 
     expected_statement = (
