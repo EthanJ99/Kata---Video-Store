@@ -19,7 +19,7 @@ def test_generate_statement_for_three_regular_rentals():
 
     assert generate_statement(rental_data=rental_data, customer_name="Name") == expected_statement
 
-def test_generate_statement_for_one_new():
+def test_generate_statement_for_one_new_rental():
     rental_data = [
         {"name": "Crazynotes", "length": 1, "type": "new"}
     ]
@@ -51,3 +51,35 @@ def test_generate_statement_for_three_new_rentals():
 
     assert generate_statement(rental_data=rental_data, customer_name="Name") == expected_statement
 
+def test_generate_statement_for_one_childrens_rental():
+    rental_data = [
+        {"name": "Crazynotes", "length": 1, "type": "child"}
+    ]
+
+    expected_statement = (
+        "Rental Record for Customer Name\n"
+        "Crazynotes  £1.5\n"
+        "You owe £1.5\n"
+        "You earned 1 frequent renter points"
+    )
+
+    assert generate_statement(rental_data=rental_data, customer_name="Name") == expected_statement
+
+
+def test_generate_statement_for_three_childrens_rentals():
+    rental_data = [
+        {"name": "Crazynotes", "length": 1, "type": "child"},
+        {"name": "Teeth", "length": 3, "type": "child"},
+        {"name": "The Web", "length": 4, "type": "child"},
+    ]
+
+    expected_statement = (
+        "Rental Record for Customer Name\n"
+        "Crazynotes  £1.5\n"
+        "Teeth  £1.5\n"
+        "The Web  £3.0\n"
+        "You owe £6.0\n"
+        "You earned 3 frequent renter points"
+    )
+
+    assert generate_statement(rental_data=rental_data, customer_name="Name") == expected_statement
