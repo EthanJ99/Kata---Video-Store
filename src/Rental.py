@@ -1,5 +1,5 @@
 from src import Movie
-from src.calc_utils import GET_POINTS, GET_PRICE
+from src.utils.calc_utils import GET_POINTS, GET_PRICE
 
 
 class Rental():

@@ -1,7 +1,6 @@
 from src.Movie import Movie
 from src.Rental import Rental
 from src.Statement import Statement
-from src.generate_statement import generate_statement
 
 def test_generate_statement_for_one_regular_rental():
     rental_data = [

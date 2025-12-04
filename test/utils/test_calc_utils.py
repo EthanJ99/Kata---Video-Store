@@ -1,4 +1,4 @@
-from src.calc_utils import get_child_points, get_child_price, get_new_points, get_new_price, get_regular_points, get_regular_price
+from src.utils.calc_utils import get_child_points, get_child_price, get_new_points, get_new_price, get_regular_points, get_regular_price
 
 
 def test_get_regular_price():
