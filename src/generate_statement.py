@@ -1,3 +1,4 @@
+from src.calc_utils import GET_POINTS, GET_PRICE
 
 
 def generate_statement(rental_data, customer_name):
@@ -12,15 +13,8 @@ def generate_statement(rental_data, customer_name):
     statement += f"Rental Record for Customer {customer_name}\n"
     
     for rental in rental_data:
-        if(rental["type"] == "regular"):
-            price = 2.0 if rental["length"] <= 2 else (rental["length"] - 2) * 1.50 + 2.0
-            renter_points += 1
-        elif(rental["type"] == "new"):
-            price = rental["length"] * 3.0
-            renter_points += 2 if rental["length"] >= 2 else 1
-        else:
-            price = 1.50 if rental["length"] <= 3 else (rental["length"] - 3) * 1.50 + 1.50
-            renter_points += 1
+        price = GET_PRICE[rental["type"]](rental["length"])
+        renter_points += GET_POINTS[rental["type"]](rental["length"])
 
         total_price += price
         
