@@ -1,5 +1,6 @@
 from src.Movie import Movie
 from src.Rental import Rental
+from src.Statement import Statement
 from src.generate_statement import generate_statement
 
 def test_generate_statement_for_one_regular_rental():
@@ -14,7 +15,7 @@ def test_generate_statement_for_one_regular_rental():
         "You earned 1 frequent renter points"
     )
 
-    assert generate_statement(rental_data=rental_data, customer_name="Name") == expected_statement
+    assert Statement(rental_data=rental_data, customer_name="Name").generate() == expected_statement
 
 
 def test_generate_statement_for_three_regular_rentals():
@@ -33,7 +34,7 @@ def test_generate_statement_for_three_regular_rentals():
         "You earned 3 frequent renter points"
     )
 
-    assert generate_statement(rental_data=rental_data, customer_name="Name") == expected_statement
+    assert Statement(rental_data=rental_data, customer_name="Name").generate() == expected_statement
 
 def test_generate_statement_for_one_new_rental():
     rental_data = [
@@ -47,7 +48,7 @@ def test_generate_statement_for_one_new_rental():
         "You earned 1 frequent renter points"
     )
 
-    assert generate_statement(rental_data=rental_data, customer_name="Name") == expected_statement
+    assert Statement(rental_data=rental_data, customer_name="Name").generate() == expected_statement
 
 def test_generate_statement_for_three_new_rentals():
     rental_data = [
@@ -65,7 +66,7 @@ def test_generate_statement_for_three_new_rentals():
         "You earned 5 frequent renter points"
     )
 
-    assert generate_statement(rental_data=rental_data, customer_name="Name") == expected_statement
+    assert Statement(rental_data=rental_data, customer_name="Name").generate() == expected_statement
 
 def test_generate_statement_for_one_childrens_rental():
     rental_data = [
@@ -79,7 +80,7 @@ def test_generate_statement_for_one_childrens_rental():
         "You earned 1 frequent renter points"
     )
 
-    assert generate_statement(rental_data=rental_data, customer_name="Name") == expected_statement
+    assert Statement(rental_data=rental_data, customer_name="Name").generate() == expected_statement
 
 
 def test_generate_statement_for_three_childrens_rentals():
@@ -98,4 +99,4 @@ def test_generate_statement_for_three_childrens_rentals():
         "You earned 3 frequent renter points"
     )
 
-    assert generate_statement(rental_data=rental_data, customer_name="Name") == expected_statement
+    assert Statement(rental_data=rental_data, customer_name="Name").generate() == expected_statement
